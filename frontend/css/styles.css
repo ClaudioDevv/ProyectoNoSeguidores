@@ -1,0 +1,206 @@
+body{
+    background: rgb(226, 175, 182);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+    'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    font-size: 20px;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #d6336c;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 18px; 
+    line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+    color: #333; 
+    margin: 10px 0; /* Espaciado entre párrafos */
+    padding: 10px; /* Espaciado interno para resaltar el texto */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 600px; /* Ancho máximo para que no se extiendan demasiado */
+    margin-left: auto; /* Centrar los párrafos */
+    margin-right: auto; /* Centrar los párrafos */
+}
+
+p:first-of-type {
+    font-weight: bold;
+    color: #d6336c;
+}
+
+p:last-of-type {
+    font-style: italic; 
+    color: #1c7ed6; 
+}
+
+.carrusel {
+    position: relative;
+    max-width: 300px; /* Ajustar el tamaño del carrusel */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fotos {
+    max-width: 300px; /* Ajustar la imagen al ancho del contenedor */
+    object-fit: cover; /* Ajustar la imagen manteniendo proporción */
+    display: none;
+}
+
+.fotos.active {
+    display: block;
+}
+
+.carrusel-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carrusel-btn {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #d6336c;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.carrusel-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+
+fieldset {
+    border: 2px solid #d6336c; 
+    border-radius: 8px; 
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrar el fieldset y dar espacio exterior */
+    max-width: 600px; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+fieldset div {
+    margin-bottom: 15px; 
+}
+
+label {
+    display:block; 
+    font-size: 20px; 
+    color: #333; 
+    margin-bottom: 5px; /* Espaciado entre el label y el input */
+}
+
+input[type="file"] {
+    width: 96%; /* Ocupa casi todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    background-color: #fff; 
+    font-size: 14px; 
+    color: #333; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interior */
+}
+
+button {
+    display: block; 
+    width: 100%; 
+    max-width: 600px; 
+    margin: 20px auto; 
+    padding: 10px 20px;
+    font-size: 16px; 
+    color: #fff; 
+    background-color: #d6336c; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+button:hover {
+    background-color: #b52a5a; /* Cambia el color al pasar el ratón */
+}
+
+#output {
+    max-width: 700px; 
+    margin: 20px auto;
+    border-radius: 8px;
+    padding: 20px;
+    border: solid 2px #d6336c;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+}
+
+#output div {
+    padding: 10px;
+    background-color: #f8f9fa; /* Fondo ligeramente gris para cada nombre */
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+footer{
+    background-color: white;
+    width: 100vw;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+a{
+    color:black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+

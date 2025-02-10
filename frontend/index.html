@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title> NoSeguidores </title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name = "description" content="Programa para ver tus
+    no seguidores de Instagram, SIN contraseñas">
+    
+    <meta property="og:title" content="Programa NoSeguidores">
+    <meta property="og:description" content="Muy útil y seguro para 
+    saber tus no seguidores">
+    <meta property="og:image" content="./images/instagram_followers.png">
+
+    <meta name="theme-color" content="lightpink">
+
+    <link rel="icon" type="image/jpg"
+    href="./images/followers.jpg">
+
+
+</head>
+<body>
+    <main>
+            <h1>
+                <img class="logo" title="Logo" src="./images/followers.jpg">
+                NoSeguidores
+            </h1>
+        <p>
+            Con este programa podrás ver las personas que no te siguen
+            de tus seguidos en Instagram!
+        </p>
+        <p> ¡Y sin meter contraseñas, la forma más segura! </p>
+        <section>
+            <h2>¿Cómo descargar los archivos necesarios?</h2>
+            <p> Hazlo con estos sencillos pasos en 
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>.
+            </p>
+            <div class="carrusel">
+                <div class="carrusel-inner">
+                    <img class="fotos active" title="Paso 1" src="./images/imagen1.JPG">
+                    <img class="fotos" title="Paso 2" src="./images/imagen2.jpg">
+                    <img class="fotos" title="Paso 3" src="./images/imagen3.jpeg">
+                    <img class="fotos" title="Paso 4" src="./images/imagen4.jpeg">
+                    <img class="fotos" title="Paso 5" src="./images/imagen5.jpeg">
+                    <img class="fotos" title="Paso 6" src="./images/imagen6.jpeg">
+                    <img class="fotos" title="Paso 7" src="./images/imagen7.jpeg">
+                    <img class="fotos" title="Paso 8" src="./images/imagen8.jpeg">
+                </div>
+                <div class="carrusel-btn-container">
+                    <button class="carrusel-btn prev" onclick="prevImage()">&#10094;</button>
+                    <button class="carrusel-btn next" onclick="nextImage()">&#10095;</button>
+                </div>
+            </div>            
+            <p> Espere unos 10 minutos a que Instagram tenga listos los archivos y pueda descargarlos desde el centro de cuentas.</p>
+        </section>
+
+        <section>
+            <h2>Introduce aquí los siguientes archivos:</h2>
+            <fieldset>
+                <div>
+                    <label for = "seguidos">
+                        Archivo following.json:
+                    </label>
+                    <input type="file" id="seguidos" name="seguidos"
+                    accept="application/json" required>
+                </div>
+                <div>
+                    <label for = "seguidores">
+                        Archivo followers_1.json:
+                    </label>
+                    <input type="file" id="seguidores" name="seguidores"
+                    accept="application/json" required>
+                </div>
+                <button id="calcularNoSeguidores" type="button"> Calcular tus NO Seguidores</button>
+            </fieldset>
+        </section>
+        <section id="resultados">
+            <h2>Resultados:</h2>
+            <div id="output">
+                <!-- Los resultados del programa se insertarán aquí -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        Envía un correo para obtener <a href = "mailto:claudiorivasns@gmail.com"> ayuda</a>
+        <br>
+        NoSeguidores &copy; 2024 - 2025
+        
+    </footer>  
+    <script src="js/main.js"></script>      
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ejecutar C++ con argumentos",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/tu_programa",
+            "args": ["/home/claudio/Escritorio/ProyectoNoSeguidores/data/following.json", 
+            "/home/claudio/Escritorio/ProyectoNoSeguidores/data/followers_1.json"], 
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb"
+        }
+    ]
+}
