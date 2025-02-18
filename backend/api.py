@@ -3,7 +3,7 @@ import subprocess
 import os
 
 app = Flask(__name__)
-CPP_EXECUTABLE = os.path.abspath("../cplusplus/tu_programa")
+CPP_EXECUTABLE = os.path.abspath("tu_programa")
 
 # Permitir CORS (para que la web pueda comunicarse con la API)
 from flask_cors import CORS, cross_origin
