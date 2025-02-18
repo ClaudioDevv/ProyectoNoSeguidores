@@ -38,7 +38,7 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
     formData.append("seguidores", seguidores);
 
     console.log("Enviando datos al backend...");
-    let response = await fetch("https://noseguidores.com/procesar", {
+    let response = await fetch("https://api.noseguidores.com/procesar", {
         method: "POST",
         body: formData
     });
