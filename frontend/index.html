@@ -163,30 +163,26 @@
             </div>
         </section>
 
-
-        <form id="formNoSeguidores">
+        <section class="formNoSeguidores">
             <fieldset>
                 <legend>Sube tus archivos de Instagram</legend>
-        
                 <div class="input-group">
                     <label for="seguidos">Archivo <strong>following.json</strong>:</label>
                     <input type="file" id="seguidos" name="seguidos" accept="application/json" required>
                 </div>
-        
+                
                 <div class="input-group">
                     <label for="seguidores">Archivo <strong>followers_1.json</strong>:</label>
                     <input type="file" id="seguidores" name="seguidores" accept="application/json" required>
                 </div>
-        
-                <button id="calcularNoSeguidores" type="submit">Calcular tus NO Seguidores</button>
+
+                <button id="calcularNoSeguidores" type="button">Calcular tus NO Seguidores</button>
             </fieldset>
-        </form>
-        
+        </section>
 
         <section id="resultados">
             <h2>Resultados:</h2>
             <div id="output">
-                
                 <!-- Los resultados del programa se insertarán aquí -->
             </div>
         </section>
