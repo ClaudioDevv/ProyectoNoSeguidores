@@ -1,24 +1,148 @@
-let currentIndex = 0;
-const images = document.querySelectorAll('.fotos'); //seleccion los elementos de la clase fotos y los guarda en una lista
+//Botones y carrusel
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".dispositivo-btn");
+    const contents = document.querySelectorAll(".info-contenido");
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false; // Bloqueo para evitar múltiples cambios rápidos
 
-function showImage(index) {
-    images.forEach((img, i) => {    //bucle que recorre la lista
-        img.classList.toggle('active', i === index); // Activa a foto activa la imagen que corresponde al índice actual y las que no corresponden las desactiva
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            buttons.forEach(btn => btn.classList.remove("activo"));
+            button.classList.add("activo");
+
+            contents.forEach(content => {
+                content.classList.remove("activo");
+                const firstSlide = content.querySelector(".slide, .slidepc");
+                if (firstSlide) firstSlide.classList.remove("fade-transition");
+            });
+            
+            const targetContent = document.getElementById(button.dataset.target);
+            targetContent.classList.add("activo");
+
+            currentIndex = 0;
+            updateCarousel(targetContent);
+        });
     });
-}
 
-function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente índice
-    showImage(currentIndex);
-}
+    function updateCarousel(content) {
+        const slides = content.querySelectorAll(".slide, .slidepc");
+        const dots = content.querySelectorAll(".dot");
+        const prevButton = content.querySelector(".prev");
+        const nextButton = content.querySelector(".next");
+        const carruselImagenes = content.querySelector(".carrusel-imagenes");
 
-function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocede al índice anterior
-    showImage(currentIndex);
-}
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("activo", i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("activo", i === index);
+            });
+        }
 
-// Mostrar la primera imagen al cargar la página
-showImage(currentIndex);
+        showSlide(currentIndex);
+
+        prevButton.onclick = () => {
+            if (currentIndex > 0) currentIndex--;
+            showSlide(currentIndex);
+        };
+
+        nextButton.onclick = () => {
+            if (currentIndex < slides.length - 1) currentIndex++;
+            showSlide(currentIndex);
+        };
+
+        dots.forEach((dot, index) => {
+            dot.onclick = () => {
+                currentIndex = index;
+                showSlide(currentIndex);
+            };
+        });
+
+        carruselImagenes.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        carruselImagenes.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            if (isSwiping) return;
+            isSwiping = true;
+            
+            const swipeDistance = touchEndX - touchStartX;
+            if (swipeDistance > 50 && currentIndex > 0) {
+                currentIndex--;
+            } else if (swipeDistance < -50 && currentIndex < slides.length - 1) {
+                currentIndex++;
+            }
+
+            showSlide(currentIndex);
+
+            setTimeout(() => {
+                isSwiping = false;
+            }, 300);
+        }
+    }
+
+    const initialActiveContent = document.querySelector(".info-contenido.activo");
+    updateCarousel(initialActiveContent);
+});
+
+//Animacion scroll header
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+        } else {
+            header.classList.remove("header-scrolled");
+        }
+    });
+});
+
+//Entrada en la web fade-in
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-in");
+
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add("show");
+        }, index * 200);
+    });
+});
+
+
+// Animación scroll header
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+        } else {
+            header.classList.remove("header-scrolled");
+        }
+    });
+});
+
+// Entrada en la web fade-in
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-in");
+
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add("show");
+        }, index * 200);
+    });
+});
+
+
 
 
 //Api

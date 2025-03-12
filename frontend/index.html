@@ -33,73 +33,172 @@
 
 </head>
 <body>
+    <header>
+        <img class="logo" title="Logo" src="./images/followers.jpg">
+        NoSeguidores
+    </header>
     <main>
-            <h1>
-                <img class="logo" title="Logo" src="./images/followers.jpg">
-                NoSeguidores
-            </h1>
-        <p>
-            Con este programa podrás ver las personas que no te siguen
-            de tus seguidos en Instagram!
+        <h1 class="fade-in">¡Bienvenido a NoSeguidores!</h1>
+        <p class="intro fade-in">
+        Se solo fan de quien tú quieras de la forma más segura.
         </p>
-        <p> ¡Y sin meter contraseñas, la forma más segura! </p>
-        <section>
-            <h2>¿Cómo descargar los archivos necesarios?</h2>
-            <p> Hazlo con estos sencillos pasos en 
-                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>.
+
+        <section class="dispositivo-section fade-in">
+            <h2>Selecciona tu dispositivo</h2>
+            <p class="dispositivo-descripcion fade-in">
+                Elige tu modelo de dispositivo para descargar los archivos desde 
+                <a class="instagram-link" 
+                    href="https://www.instagram.com/"
+                    target="_blank" 
+                    rel="noreferrer">
+                    Instagram</a>,
+                descomprimirlos e introducirlos de forma segura.
             </p>
-            <div class="carrusel">
-                <div class="carrusel-inner">
-                    <img class="fotos active" title="Paso 1" src="./images/imagen1.JPG">
-                    <img class="fotos" title="Paso 2" src="./images/imagen2.jpg">
-                    <img class="fotos" title="Paso 3" src="./images/imagen3.jpeg">
-                    <img class="fotos" title="Paso 4" src="./images/imagen4.jpeg">
-                    <img class="fotos" title="Paso 5" src="./images/imagen5.jpeg">
-                    <img class="fotos" title="Paso 6" src="./images/imagen6.jpeg">
-                    <img class="fotos" title="Paso 7" src="./images/imagen7.jpeg">
-                    <img class="fotos" title="Paso 8" src="./images/imagen8.jpeg">
-                </div>
-                <div class="carrusel-btn-container">
-                    <button class="carrusel-btn prev" onclick="prevImage()">&#10094;</button>
-                    <button class="carrusel-btn next" onclick="nextImage()">&#10095;</button>
-                </div>
-            </div>            
-            <p> Espere unos 10 minutos a que Instagram tenga listos los archivos y pueda descargarlos desde el centro de cuentas.</p>
+
+        <div class="dispositivo-selector fade-in">
+            <button class="dispositivo-btn activo" data-target="iphone">iPhone</button>
+            <button class="dispositivo-btn" data-target="android">Android</button>
+            <button class="dispositivo-btn" data-target="pc">PC</button>
+        </div>
         </section>
 
-        <section>
-            <h2>Introduce aquí los siguientes archivos:</h2>
-            <fieldset>
-                <div>
-                    <label for = "seguidos">
-                        Archivo following.json:
-                    </label>
-                    <input type="file" id="seguidos" name="seguidos"
-                    accept="application/json" required>
+
+        <section class="dispositivo-info">
+            
+            <div id="iphone" class="info-contenido activo">
+                <div class="carrusel">
+                    
+                    <div class="carrusel-imagenes">
+                        <img class="slide fade-in activo" src="./images/iphoneimgs/iphone1.png" alt="paso1" title="Paso 1">
+                        <img class="slide" src="./images/iphoneimgs/iphone2.png" alt="paso2" title="Paso 2">
+                        <img class="slide" src="./images/iphoneimgs/iphone3.png" alt="paso3" title="Paso 3">
+                        <img class="slide" src="./images/iphoneimgs/iphone4.png" alt="paso4" title="Paso 4">
+                        <img class="slide" src="./images/iphoneimgs/iphone5.png" alt="paso5" title="Paso 5">
+                        <img class="slide" src="./images/iphoneimgs/iphone6.png" alt="paso6" title="Paso 6">
+                        <img class="slide" src="./images/iphoneimgs/iphone7.png" alt="paso7" title="Paso 7">
+                        <img class="slide" src="./images/iphoneimgs/iphone8.png" alt="paso8" title="Paso 8" > 
+                        <img class="slide" src="./images/iphoneimgs/iphone9.png" alt="paso9" title="Paso 9">
+                        <img class="slide" src="./images/iphoneimgs/iphone10.png" alt="paso10" title="Paso 10">
+                        <img class="slide" src="./images/iphoneimgs/iphone11.png" alt="paso11" title="Paso 11">
+                    </div>
+                    
+                    <div class="dots-container">
+                        <span class="dot activo" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                        <span class="dot" data-index="4"></span>
+                        <span class="dot" data-index="5"></span>
+                        <span class="dot" data-index="6"></span>
+                        <span class="dot" data-index="7"></span>
+                        <span class="dot" data-index="8"></span>
+                        <span class="dot" data-index="9"></span>
+                        <span class="dot" data-index="10"></span>
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    
                 </div>
-                <div>
-                    <label for = "seguidores">
-                        Archivo followers_1.json:
-                    </label>
-                    <input type="file" id="seguidores" name="seguidores"
-                    accept="application/json" required>
+            </div>
+            <div id="android" class="info-contenido">
+                <div class="carrusel">
+                    
+                    <div class="carrusel-imagenes">
+                        <img class="slide activo" src="./images/androidimgs/android1.png" alt="paso1" title="Paso 1">
+                        <img class="slide" src="./images/androidimgs/android2.png" alt="paso2" title="Paso 2">
+                        <img class="slide" src="./images/androidimgs/android3.png" alt="paso3" title="Paso 3">
+                        <img class="slide" src="./images/androidimgs/android4.png" alt="paso4" title="Paso 4">
+                        <img class="slide" src="./images/androidimgs/android5.png" alt="paso5" title="Paso 5">
+                        <img class="slide" src="./images/androidimgs/android6.png" alt="paso6" title="Paso 6">
+                        <img class="slide" src="./images/androidimgs/android7.png" alt="paso7" title="Paso 7">
+                        <img class="slide" src="./images/androidimgs/android8.png" alt="paso8" title="Paso 8" > 
+                    </div>
+                    
+                    <div class="dots-container">
+                        <span class="dot activo" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                        <span class="dot" data-index="4"></span>
+                        <span class="dot" data-index="5"></span>
+                        <span class="dot" data-index="6"></span>
+                        <span class="dot" data-index="7"></span>
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    
                 </div>
-                <button id="calcularNoSeguidores" type="button"> Calcular tus NO Seguidores</button>
-            </fieldset>
+            </div>
+            <div id="pc" class="info-contenido">
+                <div class="carruselpc">
+                    
+                    <div class="carrusel-imagenes">
+                        <img class="slidepc activo" src="./images/pcimgs/pc1.png" alt="paso1" title="Paso 1">
+                        <img class="slidepc" src="./images/pcimgs/pc2.png" alt="paso2" title="Paso 2">
+                        <img class="slidepc" src="./images/pcimgs/pc3.png" alt="paso3" title="Paso 3">
+                        <img class="slidepc" src="../images/pcimgs/pc4.png" alt="paso4" title="Paso 4">
+                        <img class="slidepc" src="./images/pcimgs/pc5.png" alt="paso5" title="Paso 5">
+                        <img class="slidepc" src="./images/pcimgs/pc6.png" alt="paso6" title="Paso 6">
+                        <img class="slidepc" src="./images/pcimgs/pc7.png" alt="paso7" title="Paso 7">
+                        <img class="slidepc" src="./images/pcimgs/pc8.png" alt="paso8" title="Paso 8" > 
+                        <img class="slidepc" src="./images/pcimgs/pc9.png" alt="paso8" title="Paso 9" > 
+                        
+                    </div>
+                    
+                    <div class="dots-container">
+                        <span class="dot activo" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                        <span class="dot" data-index="4"></span>
+                        <span class="dot" data-index="5"></span>
+                        <span class="dot" data-index="6"></span>
+                        <span class="dot" data-index="7"></span>
+                        <span class="dot" data-index="8"></span>
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    
+                </div>
+            </div>
         </section>
+
+
+        <form id="formNoSeguidores">
+            <fieldset>
+                <legend>Sube tus archivos de Instagram</legend>
+        
+                <div class="input-group">
+                    <label for="seguidos">Archivo <strong>following.json</strong>:</label>
+                    <input type="file" id="seguidos" name="seguidos" accept="application/json" required>
+                </div>
+        
+                <div class="input-group">
+                    <label for="seguidores">Archivo <strong>followers_1.json</strong>:</label>
+                    <input type="file" id="seguidores" name="seguidores" accept="application/json" required>
+                </div>
+        
+                <button id="calcularNoSeguidores" type="submit">Calcular tus NO Seguidores</button>
+            </fieldset>
+        </form>
+        
+
         <section id="resultados">
             <h2>Resultados:</h2>
             <div id="output">
+                
                 <!-- Los resultados del programa se insertarán aquí -->
             </div>
         </section>
     </main>
-    <footer>
-        Envía un correo para obtener <a href = "mailto:claudiorivasns@gmail.com"> ayuda</a>
-        <br>
-        NoSeguidores &copy; 2024 - 2025
-        
-    </footer>  
+
+    <footer class="footer">
+        <p>¿Necesitas ayuda o tienes sugerencias? Envíame un 
+            <a class="email" target = “_blank” rel = “noreferrer” href="mailto:claudiorivasns@gmail.com">email</a>.
+        </p>
+        <p>NoSeguidores &copy; 2024 - 2025</p>
+    </footer>
+
     <script src="js/main.js"></script>      
 </body>
 </html>

@@ -1,176 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 body{
-    background: rgb(226, 175, 182);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
-    'Helvetica Neue', sans-serif;
+    background: black;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
+    color: white;
     text-align: center;
     margin: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
 
-h1 {
+header {
     text-align: center;
-    background-color: white;
-    padding: 10px;
+    background-color: black;
+    color: white;
+    height: 64px;
     margin: 0;
     position: sticky;
     top: 0;
-    font-size: 20px;
-    width: 100vw;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
-    
+
+    transition: backdrop-filter 0.5s ease, background-color 0.5s ease;    
+}
+
+.header-scrolled {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     margin-right: 10px;
 }
 
-h2 {
-    font-size: 24px;
-    color: #d6336c;
-    margin-top: 20px;
-    margin-bottom: 10px;
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 72px;
+    max-width: 570px;
+    word-wrap: break-word;
+    text-align: center;
+    margin: 65px auto 0 auto; 
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
 }
 
-p {
-    font-size: 18px; 
-    line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
-    color: #333; 
-    margin: 10px 0; /* Espaciado entre párrafos */
-    padding: 10px; /* Espaciado interno para resaltar el texto */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    max-width: 600px; /* Ancho máximo para que no se extiendan demasiado */
-    margin-left: auto; /* Centrar los párrafos */
-    margin-right: auto; /* Centrar los párrafos */
+
+
+.intro{
+    font-size: 23px;
+    color: grey;
+    margin-top: 6px;
+    padding: 5px;
+    letter-spacing:-0.3mm;
+    text-align: center;
+    text-justify: inter-word;
 }
 
-p:first-of-type {
+
+/* SECCIÓN PRINCIPAL */
+.dispositivo-section {
+    width: 100%;
+    max-width: 1200px; /* Aumentamos el ancho máximo */
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* TÍTULO Y DESCRIPCIÓN */
+.dispositivo-section h2 {
+    font-size: 55px;
+    margin-bottom: 10px;
+    text-align: left;
+    max-width: 500px; 
+    margin-left: 0; 
+}
+
+.dispositivo-descripcion, .instagram-link {
+    font-size: 20px;
+    color: grey;
+    margin-bottom: 20px;
+    text-align: left;
+    
+    max-width: 500px;
+    margin-left: 0; /* Asegurar que esté alineado a la izquierda */
+}
+/*INSTAGRAM LINK*/
+.instagram-link{
     font-weight: bold;
-    color: #d6336c;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+.instagram-link:hover{
+    color: white;
 }
 
-p:last-of-type {
-    font-style: italic; 
-    color: #1c7ed6; 
+
+/* CONTENEDOR FLEX PARA LOS BOTONES */
+.dispositivo-selector {
+    display: flex;
+    justify-content: flex-start; /* Alinear a la izquierda */
+    gap: 10px;
+    max-width: 500px;
 }
 
+/* ESTILO DE LOS BOTONES */
+.dispositivo-btn {
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid #a400b3;
+    background: none;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s, opacity 0.3s;
+}
+
+.dispositivo-btn:hover{
+    background: #a400b3;
+    opacity: 0.7;
+}
+
+.dispositivo-btn.activo {
+    background: #a400b3;
+}
+
+
+/* ENTRADA EN LA WEB ANIMACIÓN */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONTENEDOR DE INFORMACIÓN */
+.dispositivo-info {
+    background: url("../images/fondo2040morado.avif") no-repeat center center;
+
+    background-position: center;
+    padding: 20px;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* OCULTAR SECCIONES INACTIVAS */
+.info-contenido {
+    display: none;
+    
+}
+
+.info-contenido.activo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* CARRUSEL */
 .carrusel {
     position: relative;
-    max-width: 300px; /* Ajustar el tamaño del carrusel */
-    margin: 20px auto;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carruselpc{
+    position: relative;
+    max-width: 1800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carrusel-imagenes {
+    display: flex;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
 }
 
-.fotos {
-    max-width: 300px; /* Ajustar la imagen al ancho del contenedor */
-    object-fit: cover; /* Ajustar la imagen manteniendo proporción */
-    display: none;
+.slide, .slidepc {
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    position:absolute;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.fotos.active {
-    display: block;
+
+
+.slide.activo {
+    max-width: 400px;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    border-radius: 20px;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
 }
 
-.carrusel-btn-container {
+.slidepc.activo{
+    max-width: 1300px;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    border-radius: 20px;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
+}
+
+.prev, .next {
+    position: static;
+    color: white;
+    margin: 8px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.prev {
+    margin-left: 30px;
+}
+
+.next {
+    right: 15px;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
 }
 
-.carrusel-btn {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    color: #d6336c;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 10px;
+.dot {
+    width: 10px;
+    height: 10px;
+    background: gray;
     border-radius: 50%;
     margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
 }
 
-.carrusel-btn:hover {
-    background-color: rgba(255, 255, 255, 1);
+.dot.activo {
+    background: white;
+    transform: scale(1.3);
 }
 
 
-fieldset {
-    border: 2px solid #d6336c; 
-    border-radius: 8px; 
-    padding: 20px; /* Espaciado interno */
-    margin: 20px auto; /* Centrar el fieldset y dar espacio exterior */
-    max-width: 600px; 
-    background-color: rgba(255, 255, 255, 0.9); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+
+/* FORMULARIO */
+form{
+    margin: 50px;
+    padding: 20px;
 }
 
-fieldset div {
-    margin-bottom: 15px; 
+fieldset{
+    border: none;
 }
 
-label {
-    display:block; 
-    font-size: 20px; 
-    color: #333; 
-    margin-bottom: 5px; /* Espaciado entre el label y el input */
+legend{
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align:center;
+    max-width: 500px;
+    
 }
 
-input[type="file"] {
-    width: 96%; /* Ocupa casi todo el ancho disponible */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    background-color: #fff; 
-    font-size: 14px; 
-    color: #333; 
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interior */
+.input-group{
+    padding: 10px;
+    margin: 10px;
 }
 
-button {
-    display: block; 
-    width: 100%; 
-    max-width: 600px; 
-    margin: 20px auto; 
-    padding: 10px 20px;
-    font-size: 16px; 
-    color: #fff; 
-    background-color: #d6336c; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+label{
+    display: block;
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
 }
 
-button:hover {
-    background-color: #b52a5a; /* Cambia el color al pasar el ratón */
+#seguidos, #seguidores{
+   font-size: 15px;
+   color: grey;
+}
+
+#calcularNoSeguidores{
+    padding: 10px 15px;
+    font-size: 18px;
+    margin: 20px;
+    cursor: pointer;
+    border: 2px solid #a400b3;
+    background: none;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#calcularNoSeguidores:hover{
+    background: #a400b3;
+}
+
+/* SALIDA RESULTADOS */
+#resultados h2{
+    font-size: 55px;
+    text-align:center;
+    margin: 20px;
+
 }
 
 #output {
-    max-width: 700px; 
+    max-width: 700px;
     margin: 20px auto;
-    border-radius: 8px;
     padding: 20px;
-    border: solid 2px #d6336c;
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: white;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 10px; 
@@ -178,29 +366,144 @@ button:hover {
 
 #output div {
     padding: 10px;
-    background-color: #f8f9fa; /* Fondo ligeramente gris para cada nombre */
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     text-align: center;
     font-size: 16px;
-    color: #333;
+    color: grey;
 }
 
-footer{
-    background-color: white;
-    width: 100vw;
-    font-size: 14px;
-    margin: 0;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-a{
-    color:black;
+.email{
+    font-size: 15px;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+footer{
+    background: black;
+    color:white;
+    width: 100%;
+    font-size: 15px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    header{
+        position: sticky;
+    }
+
+    h1 {
+        font-size: 35px;
+        max-width: 90%;
+        margin-top: 15px; 
+    }
+
+    .intro{
+        font-size: 20px;
+        max-width: 260px;
+        margin-top: 0px;
+    }
+
+    .dispositivo-section{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-left: 0px;
+    }
+
+    .dispositivo-section h2, #resultados h2{
+        font-size: 30px;
+        margin-top: 0px;
+    }
+
+    .dispositivo-descripcion, .instagram-link {
+        font-size: 20px;
+        margin-top: 0px;
+        text-align: left;
+        letter-spacing:-0.3mm;
+        max-width: 300px;
+    }
+
+    .dispositivo-info{
+        min-height: auto;
+        max-width: 300px;
+        padding: 10px;
+        background-size: contain;
+    }
+
+    .slide.activo{
+        max-width: 230px;
+    }
+
+    .slidepc.activo{
+        max-width: 340px;
+    }
+
+    .dots-container{
+        margin-top: 5px;
+    } 
+
+    .dot{
+        width: 6px;
+        height: 6px;
+        margin: 0 3px;
+    }
+
+    .prev, .next{
+        width: 30px;
+        height: 30px;
+    }
+    
+    form{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    legend{
+        font-size: 27px;
+        margin-top: 0px;
+    }
+
+    label{
+        font-size: 20px;
+    }
+
+    #seguidos, #seguidores{
+        font-size: 12px;
+    }
+
+    #output{
+        max-width: 380px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 5px;  
+    }
+
+    #output div{
+        font-size: 13px;
+        overflow: hidden;
+        white-space: normal;
+    }
+
+    footer{
+        padding-top: 0px;
+    }
+
+    .fade-in {
+        opacity: 0 !important;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .fade-in.show {
+        opacity: 1 !important;
+        transform: translateY(0);
+    }
+}
