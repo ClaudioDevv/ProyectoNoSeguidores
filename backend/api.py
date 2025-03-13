@@ -6,18 +6,11 @@ import os
 app = Flask(__name__)
 
 # Solo permitir solicitudes desde tu dominio
-CORS(app, origins=["https://noseguidores.com"])
+CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com"])
 
 CPP_EXECUTABLE = os.path.abspath("cplusplus/tu_programa")
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-@app.before_request
-def before_request():
-    # Forzar HTTPS en producción
-    if not request.is_secure and not app.debug:
-        url = request.url.replace("http://", "https://", 1)
-        return jsonify({"error": "Por favor, utiliza HTTPS para las solicitudes."}), 400
 
 @app.after_request
 def aplicar_headers(response):
