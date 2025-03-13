@@ -139,6 +139,7 @@ h1 {
 
 .dispositivo-btn.activo {
     background: #a400b3;
+    opacity: 1;
 }
 
 
