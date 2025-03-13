@@ -12,18 +12,19 @@
 
 using namespace std;
 
-class Info {
+class Info
+{
 private:
     vector<string> seguidores;
     vector<string> seguidos;
-    vector <string> noseguidores;
+    vector<string> noseguidores;
 
 public:
     Info();
     ~Info();
-    Info(const Info& orig);
+    Info(const Info &orig);
     Info interseccion();
-    void load(const string& archivoSeguidos, const string& archivoSeguidores);
-    friend ostream& operator<<(ostream& flujo, const Info& info);
+    bool load(const string &archivoSeguidos, const string &archivoSeguidores);
+    friend ostream &operator<<(ostream &flujo, const Info &info);
 };
-#endif //INFO_H
+#endif // INFO_H

@@ -7,7 +7,7 @@ app = Flask(__name__)
 CPP_EXECUTABLE = os.path.abspath("cplusplus/tu_programa")
 
 # Permitir CORS (para que la web pueda comunicarse con la API)
-CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com"])
+CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com", "http://127.0.0.1:5500/index.html"])
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -30,34 +30,45 @@ def home():
 @cross_origin()
 def procesar():
     if 'seguidos' not in request.files or 'seguidores' not in request.files:
-        print("Archivos no recibidos")  # depurar
         return jsonify({"error": "Faltan archivos"}), 400
 
-    print("Archivos recibidos: seguidos, seguidores")  # depurar
     seguidos = request.files['seguidos']
     seguidores = request.files['seguidores']
 
-    seguidos_path = os.path.join(UPLOAD_FOLDER, "seguidos.json")
-    seguidores_path = os.path.join(UPLOAD_FOLDER, "seguidores.json")
+    # Validar nombres de archivos
+    if seguidos.filename != "following.json" or seguidores.filename != "followers_1.json":
+        return jsonify({"error": "Los archivos deben llamarse 'following.json' y 'followers_1.json'."}), 400
+
+    seguidos_path = os.path.join(UPLOAD_FOLDER, "following.json")
+    seguidores_path = os.path.join(UPLOAD_FOLDER, "followers_1.json")
 
     seguidos.save(seguidos_path)
     seguidores.save(seguidores_path)
 
     try:
-        # Ejecutamos el programa en C++
+        # Ejecutar el programa en C++
         resultado = subprocess.run(
             [CPP_EXECUTABLE, seguidos_path, seguidores_path],
             capture_output=True, text=True
         )
-        print("Salida de error:", resultado.stderr)  # Depurar errores
 
-        if resultado.returncode != 0:
-            return jsonify({"error": "Error al ejecutar el programa"}), 500
+        # Manejar códigos de retorno
+        if resultado.returncode == 1:
+            return jsonify({"error": "Error: Número incorrecto de argumentos."}), 400
+        elif resultado.returncode == 2:
+            return jsonify({"error": "Error: Los archivos no tienen los nombres esperados."}), 400
+        elif resultado.returncode == 3:
+            return jsonify({"error": "Error: No se pudieron cargar los archivos."}), 500
+        elif resultado.returncode == 4:
+            return jsonify({"error": "Error interno del servidor."}), 500
+        elif resultado.returncode != 0:
+            return jsonify({"error": "Error desconocido al ejecutar el programa."}), 500
 
+        # Si todo va bien, devolver el resultado
         return jsonify({"resultado": resultado.stdout.strip()})
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Error interno del servidor."}), 500
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
