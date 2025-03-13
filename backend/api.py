@@ -1,33 +1,41 @@
 from flask import Flask, request, jsonify
 import subprocess
 import os
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CPP_EXECUTABLE = os.path.abspath("cplusplus/tu_programa")
 
 # Permitir CORS (para que la web pueda comunicarse con la API)
-from flask_cors import CORS, cross_origin
-CORS(app)
+CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com"])
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.after_request
+def aplicar_headers(response):
+    # Agregar headers de seguridad
+    response.headers['Content-Security-Policy'] = "default-src 'self' https://noseguidores.com"
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['Referrer-Policy'] = 'no-referrer'
+    response.headers['Permissions-Policy'] = 'geolocation=(), microphone=()'
+    return response
 
 @app.route('/', methods=['GET'])
 def home():
     return "API funcionando correctamente", 200
 
-
 @app.route('/procesar', methods=['POST'])
 @cross_origin()
 def procesar():
     if 'seguidos' not in request.files or 'seguidores' not in request.files:
-        print("Archivos no recibidos") #depurar
+        print("Archivos no recibidos")  # depurar
         return jsonify({"error": "Faltan archivos"}), 400
 
-    print("Archivos recibidos: seguidos, seguidores")  #depurar
+    print("Archivos recibidos: seguidos, seguidores")  # depurar
     seguidos = request.files['seguidos']
     seguidores = request.files['seguidores']
-
 
     seguidos_path = os.path.join(UPLOAD_FOLDER, "seguidos.json")
     seguidores_path = os.path.join(UPLOAD_FOLDER, "seguidores.json")
@@ -53,3 +61,4 @@ def procesar():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
+
