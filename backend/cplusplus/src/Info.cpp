@@ -26,7 +26,7 @@ Info Info::interseccion()
 {
     for (const auto &seguido : seguidos)
     {
-        if (find(seguidores.begin(), seguidores.end(), seguido) == seguidores.end())
+        if (seguidores.find(seguido) == seguidores.end()) // Búsqueda O(1)
         {
             noseguidores.push_back(seguido);
         }
@@ -43,7 +43,7 @@ ostream &operator<<(ostream &flujo, const Info &info)
     return flujo;
 }
 
-bool Info ::load(const string &archivoSeguidos, const string &archivoSeguidores)
+bool Info::load(const string &archivoSeguidos, const string &archivoSeguidores)
 {
     // Cargar el archivo de seguidos
     ifstream archivo1(archivoSeguidos);
@@ -55,7 +55,7 @@ bool Info ::load(const string &archivoSeguidos, const string &archivoSeguidores)
         {
             if (!item["string_list_data"].empty())
             {
-                seguidos.push_back(item["string_list_data"][0]["value"].get<string>());
+                seguidos.insert(item["string_list_data"][0]["value"].get<string>()); // Insertar en unordered_set
             }
         }
         archivo1.close();
@@ -76,7 +76,7 @@ bool Info ::load(const string &archivoSeguidos, const string &archivoSeguidores)
         {
             if (!item["string_list_data"].empty())
             {
-                seguidores.push_back(item["string_list_data"][0]["value"].get<string>());
+                seguidores.insert(item["string_list_data"][0]["value"].get<string>()); // Insertar en unordered_set
             }
         }
         archivo2.close();
