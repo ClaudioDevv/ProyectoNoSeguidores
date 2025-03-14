@@ -13,15 +13,15 @@ using namespace std;
 class Info
 {
 private:
-    unordered_set<string> seguidores; // Cambiado a unordered_set
-    unordered_set<string> seguidos;   // Cambiado a unordered_set
-    vector<string> noseguidores;      // Se mantiene como vector para el resultado
+    unordered_set<string> seguidores;
+    unordered_set<string> seguidos;
+    vector<string> noseguidores;
 
 public:
     Info();
     ~Info();
     Info(const Info &orig);
-    Info interseccion();
+    void interseccion();
     bool load(const string &archivoSeguidos, const string &archivoSeguidores);
     friend ostream &operator<<(ostream &flujo, const Info &info);
 };

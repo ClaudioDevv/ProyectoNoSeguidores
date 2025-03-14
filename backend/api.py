@@ -4,10 +4,10 @@ import os
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-CPP_EXECUTABLE = os.path.abspath("cplusplus/tu_programa")
+CPP_EXECUTABLE = os.path.abspath("cplusplus/noseguidores")
 
-# Permitir CORS (para que la web pueda comunicarse con la API)
-CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com", "http://127.0.0.1:5500/index.html"])
+# Permitir CORS (para que la web pueda comunicarse con la API). No olvidar cambiar la dirección local
+CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com"])
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)

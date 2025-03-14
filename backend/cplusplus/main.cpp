@@ -9,24 +9,25 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    // Verificar número de argumentos
+    // Comprobar número de argumentos, error nº1
     if (argc != 3)
     {
         cerr << "Error: Número incorrecto de argumentos." << endl;
-        return 1; // Código de error para número incorrecto de argumentos
+        return 1;
     }
 
-    // Cargar y procesar los archivos
     Info informacion;
+
+    // Cargar los archivos, error nº3
     if (!informacion.load(argv[1], argv[2]))
     {
-        cerr << "Error: No se pudieron cargar los archivos." << endl;
-        return 3; // Código de error para fallo al cargar archivos
+        cerr << "Error: Fallo al cargar los archivos." << endl;
+        return 3;
     }
 
-    // Realizar la intersección y mostrar el resultado
+    // Realizar la intersección entre following and followers
     informacion.interseccion();
-    cout << informacion << endl; // Salida del resultado
+    cout << informacion << endl;
 
-    return 0; // Éxito
+    return 0;
 }
