@@ -131,18 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Entrada en la web fade-in
-document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll(".fade-in");
-
-    elements.forEach((el, index) => {
-        setTimeout(() => {
-            el.classList.add("show");
-        }, index * 200);
-    });
-});
-
-
 
 
 //Api
@@ -185,6 +173,9 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
             div.textContent = nombre.trim(); // Eliminar espacios en blanco alrededor del nombre
             document.getElementById("output").appendChild(div);
         });
+
+        // Mostrar la sección de resultados cuando los datos estén listos
+        document.getElementById("resultados").style.display = "block";
     }
 });
 

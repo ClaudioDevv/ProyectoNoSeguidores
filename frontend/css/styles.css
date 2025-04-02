@@ -352,6 +352,10 @@ label{
     background: #a400b3;
 }
 
+#resultados{
+    display:none;
+}
+
 /* SALIDA RESULTADOS */
 #resultados h2{
     font-size: 55px;
