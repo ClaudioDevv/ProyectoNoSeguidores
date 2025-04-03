@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showCookieBanner() {
     const bannerHTML = `
-    <div id="cookie-banner" style="position: fixed; background: rgb(255, 255, 255); max-width: 360px; bottom: 20px; right: 20px; margin-left: 20px; color: white; padding: 20px; border-radius:14px; box-sizing: border-box; z-index: 10; display: flex; flex-direction: column; align-items: center;">
+    <div id="cookie-banner" style="position: fixed; background: rgb(255, 255, 255); max-width: 360px; bottom: 20px; right: 20px; margin-left: 15px; color: white; padding: 20px; border-radius:14px; box-sizing: border-box; z-index: 10; display: flex; flex-direction: column; align-items: center;">
         <p style="margin: 0 0 15px 0;color: rgb(34, 34, 34); text-align:justify; font-size:14px; font-family: 'Inter', sans-serif; line-height: 1.6em;">
             Utilizamos cookies para mejorar tu experiencia, analizar el tráfico de la web y ofrecer contenido personalizado. Lee nuestra 
             <a href="politica-cookies.html" target="_blank" rel="noopener noreferrer" style="color: rgb(0, 153, 255); text-decoration: none;">Política de Cookies</a>.
@@ -130,8 +130,19 @@ function loadAllServices() {
 }
 
 function loadGoogleAnalytics() {
-    // Tu código actual de Google Analytics ya está en el HTML
-    console.log('Google Analytics cargado');
+    // 1. Cargar el script de gtag.js dinámicamente
+    const gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-5QER3ELVCS';
+    document.head.appendChild(gtagScript);
+
+    // 2. Configurar dataLayer y función gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-5QER3ELVCS');
+
+    console.log('Google Analytics cargado correctamente'); // Para depuración
 }
 
 function loadGoogleAds() {
