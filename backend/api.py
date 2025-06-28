@@ -34,7 +34,6 @@ def home():
     return "API funcionando correctamente", 200
 
 @app.route('/procesar', methods=['POST'])
-@cross_origin()
 def procesar():
     if 'seguidos' not in request.files or 'seguidores' not in request.files:
         return jsonify({"error": "Faltan archivos"}), 400
