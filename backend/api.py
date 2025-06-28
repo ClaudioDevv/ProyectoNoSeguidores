@@ -7,7 +7,14 @@ app = Flask(__name__)
 CPP_EXECUTABLE = os.path.abspath("cplusplus/noseguidores")
 
 # Permitir CORS (para que la web pueda comunicarse con la API). No olvidar cambiar la dirección local
-CORS(app, origins=["https://noseguidores.com", "https://api.noseguidores.com"])
+CORS(app, origins=[
+    "https://noseguidores.com",
+    "https://api.noseguidores.com",
+    "https://proyectonoseguidores.onrender.com",
+    "https://proyecto-no-seguidores-claudiodevvs-projects.vercel.app",
+    "https://proyecto-no-seguidores-95etwd3yv-claudiodevvs-projects.vercel.app"
+])
+
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
