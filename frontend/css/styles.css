@@ -585,6 +585,7 @@ footer{
         width: 100%;
         padding: 10px;
         overflow: hidden;
+        margin:auto;
         text-overflow: ellipsis;
         
     }

@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 
     // Realizar la intersección entre following and followers
     informacion.interseccion();
+    // Es un vector de strings
     cout << informacion << endl;
 
     return 0;
