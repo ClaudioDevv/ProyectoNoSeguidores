@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
 import subprocess
 import os
-from flask_cors import CORS, cross_origin
+import uuid
+import json
+import logging
+from flask_cors import CORS
 
 app = Flask(__name__)
-CPP_EXECUTABLE = os.path.abspath("cplusplus/noseguidores")
-
-# Permitir CORS (para que la web pueda comunicarse con la API). No olvidar cambiar la dirección local
 CORS(app, origins=[
     "https://noseguidores.com",
     "https://api.noseguidores.com",
@@ -15,13 +15,19 @@ CORS(app, origins=[
     "https://proyecto-no-seguidores-95etwd3yv-claudiodevvs-projects.vercel.app"
 ])
 
+# Ruta al ejecutable C++
+CPP_EXECUTABLE = os.getenv("CPP_EXECUTABLE", os.path.abspath("cplusplus/noseguidores"))
 
+# Carpeta donde guardar los archivos temporalmente
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+# Configuración del logging (para producción)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 @app.after_request
 def aplicar_headers(response):
-    # Agregar headers de seguridad
     response.headers['Content-Security-Policy'] = "default-src 'self' https://noseguidores.com"
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'DENY'
@@ -41,24 +47,38 @@ def procesar():
     seguidos = request.files['seguidos']
     seguidores = request.files['seguidores']
 
-    # Validar nombres de archivos
+    # Validar nombres de archivo (opcional, pero puede ayudar)
     if seguidos.filename != "following.json" or seguidores.filename != "followers_1.json":
         return jsonify({"error": "Los archivos deben llamarse 'following.json' y 'followers_1.json'."}), 400
 
-    seguidos_path = os.path.join(UPLOAD_FOLDER, "following.json")
-    seguidores_path = os.path.join(UPLOAD_FOLDER, "followers_1.json")
-
-    seguidos.save(seguidos_path)
-    seguidores.save(seguidores_path)
+    # Validar contenido JSON
+    try:
+        json.load(seguidos.stream)
+        seguidos.stream.seek(0)  # Volver al inicio del archivo
+    except json.JSONDecodeError:
+        return jsonify({"error": "El archivo 'following.json' no es un JSON válido."}), 400
 
     try:
-        # Ejecutar el programa en C++
+        json.load(seguidores.stream)
+        seguidores.stream.seek(0)
+    except json.JSONDecodeError:
+        return jsonify({"error": "El archivo 'followers_1.json' no es un JSON válido."}), 400
+
+    # Crear nombre único para los archivos (usuarios concurrentes)
+    uid = str(uuid.uuid4())
+    seguidos_path = os.path.join(UPLOAD_FOLDER, f"{uid}_following.json")
+    seguidores_path = os.path.join(UPLOAD_FOLDER, f"{uid}_followers.json")
+
+    try:
+        seguidos.save(seguidos_path)
+        seguidores.save(seguidores_path)
+
+        # Ejecutar programa C++
         resultado = subprocess.run(
             [CPP_EXECUTABLE, seguidos_path, seguidores_path],
             capture_output=True, text=True
         )
 
-        # Manejar códigos de retorno
         if resultado.returncode == 1:
             return jsonify({"error": "Error: Número incorrecto de argumentos."}), 400
         elif resultado.returncode == 2:
@@ -70,12 +90,20 @@ def procesar():
         elif resultado.returncode != 0:
             return jsonify({"error": "Error desconocido al ejecutar el programa."}), 500
 
-        # Si todo va bien, devolver el resultado
-        return jsonify({"resultado": resultado.stdout.strip()})
+        # Éxito: se devuelve el resultado como lista JSON
+        lista = resultado.stdout.strip().split('\n')
+        return jsonify({"resultado": lista})
 
     except Exception as e:
+        logger.error(f"Error al procesar archivos: {e}")
         return jsonify({"error": "Error interno del servidor."}), 500
+
+    finally:
+        # Eliminar archivos temporales
+        if os.path.exists(seguidos_path):
+            os.remove(seguidos_path)
+        if os.path.exists(seguidores_path):
+            os.remove(seguidores_path)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=False)
-

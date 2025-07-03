@@ -162,16 +162,14 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
         document.getElementById("output").innerText = "Error: " + data.error;
     } else {
         // Limpiar el contenido anterior del output
-        document.getElementById("output").innerHTML = "";
+        const output = document.getElementById("output");
+        output.innerHTML = "";
 
-        // Convertir la lista de nombres en un array (separados por \n)
-        const nombresArray = data.resultado.split('\n');
-
-        // Crear un div para cada nombre y agregarlo al output
-        nombresArray.forEach(nombre => {
-            const div = document.createElement('div');
-            div.textContent = nombre.trim(); // Eliminar espacios en blanco alrededor del nombre
-            document.getElementById("output").appendChild(div);
+        // data.resultado ya es un array de nombres
+        data.resultado.forEach((nombre) => {
+            const div = document.createElement("div");
+            div.textContent = nombre.trim();
+            output.appendChild(div);
         });
 
         // Mostrar la sección de resultados cuando los datos estén listos
