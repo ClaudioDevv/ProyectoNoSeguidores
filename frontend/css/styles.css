@@ -75,11 +75,40 @@ h1 {
 }
 
 
-/* SECCIÓN PRINCIPAL */
+/* SECCIÓN PARRAFO SEGURIDAD */
+.seguridad {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
+    padding: 20px;
+}
+
+
+.seguridad h2 {
+    font-size: 55px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    text-align: left;
+    max-width: 530px;
+    margin-left: auto;
+    
+}
+
+.seguridad-descripcion {
+    font-size: 20px;
+    color: grey;
+    margin-bottom: 20px;
+    text-align: justify;
+    max-width: 530px;
+    margin-left: auto;
+}
+
+
+/*SECCION DISPOSITIVO*/
 .dispositivo-section {
     width: 100%;
     max-width: 1200px; /* Aumentamos el ancho máximo */
-    margin: 50px auto;
+    margin: 0 auto 50px auto;
     padding: 20px;
 }
 
@@ -87,6 +116,7 @@ h1 {
 .dispositivo-section h2 {
     font-size: 55px;
     margin-bottom: 10px;
+    margin-top: 10px;
     text-align: left;
     max-width: 500px; 
     margin-left: 0; 
@@ -315,8 +345,17 @@ legend{
     text-align:center;
     max-width: 500px;
     word-wrap: break-word;
-    
-    
+}
+
+.form-descripcion{
+    font-size: 23px;
+    color: grey;
+    margin-top: 6px;
+    padding: 5px;
+    letter-spacing:-0.3mm;
+    text-align: center;
+    text-justify: inter-word;
+    max-width: 500px;
 }
 
 .input-group{
@@ -403,9 +442,14 @@ footer{
 
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+/* Ocultar botón de PC en dispositivos móviles */
 
+@media (max-width: 768px) {
+  button[data-target="pc"] {
+    display: none;
+  }
 }
+
 
 @media (max-width: 480px) {
     header{
@@ -423,7 +467,28 @@ footer{
         max-width: 260px;
         margin-top: 0px;
     }
+    /* Parrafo seguridad */
+    .seguridad{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-left: 0px;
+    }
+    .seguridad h2{
+        max-width: 300px;
+        font-size: 30px;
+        margin-top: 0px;
+        text-align: right;
+    }
 
+    .seguridad-descripcion{
+        font-size: 20px;
+        margin-top: 0px;
+        text-align: justify;   
+        letter-spacing:-0.3mm;
+        max-width: 280px;
+    }
+
+    /* Parrafo dispositivo*/
     .dispositivo-section{
         margin-top: 20px;
         margin-bottom: 20px;
@@ -439,13 +504,14 @@ footer{
         margin-top: 0px;
     }
 
-    .dispositivo-descripcion, .instagram-link {
+    .dispositivo-descripcion, .instagram-link{
         font-size: 20px;
         margin-top: 0px;
         text-align: justify;   
         letter-spacing:-0.3mm;
         max-width: 270px;
     }
+
 
     .dispositivo-info{
         min-height: auto;
@@ -488,6 +554,14 @@ footer{
         padding: 15px 0px;
         box-sizing: border-box;
         
+    }
+    
+    .form-descripcion{
+        font-size: 20px;
+        max-width: 260px;
+        margin-top: 0px;
+        text-align: center;
+        margin: 0 auto 15px auto;
     }
 
     .input-group{
