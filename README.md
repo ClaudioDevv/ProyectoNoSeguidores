@@ -60,3 +60,6 @@ Este proyecto está bajo la Licencia MIT
 
 ### Autor
 Claudio Rivas, estudiante de Ingeniería Informática en la Universidad de Granada
+
+### Comentarios
+Inicialmente lo desarrollé en C++ porque era el lenguaje que dominaba. Más tarde comprendí que la misma lógica se puede implementar en JavaScript con mejor integración. Decidí mantener la versión en C++ porque muestra mi capacidad de integrar múltiples lenguajes en un mismo proyecto, aunque una versión en JS sería más eficiente en este caso.
