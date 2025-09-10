@@ -414,7 +414,18 @@ label{
     gap: 10px; 
 }
 
-#output div {
+#output.error_mode {
+    display: block;
+    text-align: center;
+}
+
+.error-message {
+    color: #a400b3;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#output .data-item {
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;

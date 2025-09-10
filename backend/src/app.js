@@ -23,11 +23,8 @@ const upload = multer({
   }
 })
 
-
 app.use(helmet())
 app.use(corsMiddleware())
-
-
 
 app.get('/', (req, res) => {
   res.send('API funcionando correctamente')
@@ -49,7 +46,9 @@ app.post(
   }
 
   if(seguidos.originalname != 'following.json' || seguidores.originalname != 'followers_1.json'){
-    return res.status(400).json({ error: "Archivos incorrectos" })
+    fs.unlink(seguidos.path, () => {})
+    fs.unlink(seguidores.path, () => {})
+    return res.status(400).json({ error: "Archivos incorrectos!" })
   }
 
   try {
@@ -74,6 +73,8 @@ app.post(
     })
   
   } catch(e){
+    fs.unlink(seguidos.path, () => {})
+    fs.unlink(seguidores.path, () => {})
     res.status(500).json({error: 'Error inesperado en el servidor'})
   }
 

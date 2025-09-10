@@ -151,8 +151,8 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
     formData.append("seguidores", seguidores);
 
     console.log("Enviando datos al backend...");
-     let response = await fetch("https://proyectonoseguidores.onrender.com/procesar", {
-    //let response = await fetch("http://192.168.1.109:8080/procesar", {
+    let response = await fetch("https://proyectonoseguidores.onrender.com/procesar", {
+    //let response = await fetch("http://localhost:8080/procesar", {
         method: "POST",
         body: formData
     });
@@ -161,7 +161,16 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
     let data = await response.json();
 
     if (data.error) {
-        document.getElementById("output").innerText = "Error: " + data.error;
+        let salida = document.getElementById("output")
+        salida.className = "error_mode"
+        
+        let errorMsg = document.createElement("div");
+        errorMsg.className = "error-message"; // Corregido: asignación de clase
+        errorMsg.innerText = "⚠️ Error: " + data.error;
+
+        salida.innerHTML = "";
+        salida.appendChild(errorMsg);
+
     } else {
         // Limpiar el contenido anterior del output
         const output = document.getElementById("output");
@@ -171,11 +180,11 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
         data.resultado.forEach((nombre) => {
             const div = document.createElement("div");
             div.textContent = nombre.trim();
+            div.className = "data-item"
             output.appendChild(div);
         });
-
-        // Mostrar la sección de resultados cuando los datos estén listos
-        document.getElementById("resultados").style.display = "block";
     }
+    // Mostrar la sección de resultados cuando los datos estén listos
+    document.getElementById("resultados").style.display = "block";
 });
 
