@@ -174,6 +174,9 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
     } else {
         // Limpiar el contenido anterior del output
         const output = document.getElementById("output");
+        if(output.classList.contains("error_mode")){
+            output.classList.remove("error_mode")
+        }
         output.innerHTML = "";
 
         // data.resultado ya es un array de nombres

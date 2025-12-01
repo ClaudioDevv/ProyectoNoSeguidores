@@ -1,5 +1,5 @@
 /*Compilar con:
-g++ -o tu_programa main.cpp ./src/*.cpp -I ./include -static
+g++ -o noseguidores main.cpp ./src/*.cpp -I ./include -static
 */
 
 #include <iostream>
