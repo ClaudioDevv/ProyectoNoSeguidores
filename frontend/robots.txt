@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /privacidad.html
+
+User-agent: UptimeRobot
+Allow: /
+
+Sitemap: https://noseguidores.com/sitemap.xml
