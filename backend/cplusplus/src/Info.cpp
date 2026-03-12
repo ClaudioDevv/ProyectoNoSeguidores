@@ -43,6 +43,7 @@ ostream &operator<<(ostream &flujo, const Info &info)
     {
         flujo << info.noseguidores[i] << endl;
     }
+
     return flujo;
 }
 
