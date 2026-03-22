@@ -230,14 +230,6 @@ h1 {
     align-items: center;
 }
 
-.carruselpc{
-    position: relative;
-    max-width: 1800px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .carrusel-imagenes {
     display: flex;
@@ -246,7 +238,7 @@ h1 {
     align-items: center;
 }
 
-.slide, .slidepc {
+.slide {
     max-width: 100%;
     height: auto;
     opacity: 0;
@@ -259,16 +251,6 @@ h1 {
 
 .slide.activo {
     max-width: 400px;
-    opacity: 1;
-    visibility: visible;
-    position: relative;
-    border-radius: 20px;
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
-}
-
-.slidepc.activo{
-    max-width: 1300px;
     opacity: 1;
     visibility: visible;
     position: relative;

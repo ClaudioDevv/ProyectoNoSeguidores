@@ -111,8 +111,7 @@ document.querySelector("#calcularNoSeguidores").addEventListener("click", async 
     formData.append("seguidores", seguidores);
 
     console.log("Enviando datos al backend...");
-    let response = await fetch("https://proyectonoseguidores.onrender.com/procesar", {
-    //let response = await fetch("http://localhost:8080/procesar", {
+    let response = await fetch(`${CONFIG.API_URL}/procesar`, {
         method: "POST",
         body: formData
     });
