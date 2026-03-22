@@ -1,7 +1,5 @@
 # NoSeguidores
 
-![logo](/frontend/images/followers.jpg)
-
 ## Qué es NoSeguidores?
 NoSeguidores es una herramienta que se utiliza para resolver una cuestión que todos hemos querido saber alguna vez: ver las personas que no nos siguen en Instagram.
 
@@ -26,7 +24,7 @@ La forma de utilizar esta herramienta es bien sencilla:
 
 ## Explicación a Alto Nivel
 1. El usuario sube los archivos descargados de Instagram (`followers.json` y `following.json`).  
-2. El backend recibe los archivos y ejecuta un binario en **C++** (para obtener el máximo rendimiento).  
+2. El backend recibe los archivos y ejecuta un binario en **C++** (para obtener máximo rendimiento).  
 3. El programa compara los conjuntos de seguidos y seguidores, devolviendo la lista de personas a las que sigues pero que no te siguen de vuelta.  
 4. El backend envía los resultados al frontend.  
 5. El frontend los muestra en una interfaz moderna y fácil de usar.
