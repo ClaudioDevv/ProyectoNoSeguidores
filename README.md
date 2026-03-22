@@ -1,4 +1,5 @@
 # NoSeguidores
+🔗 **[noseguidores.com](https://noseguidores.com)**  
 
 ## Qué es NoSeguidores?
 NoSeguidores es una herramienta que se utiliza para resolver una cuestión que todos hemos querido saber alguna vez: ver las personas que no nos siguen en Instagram.
@@ -42,19 +43,19 @@ La forma de utilizar esta herramienta es bien sencilla:
 2. Instalar dependencias del backend
     pnpm install
 3. Inicia el servidor desde la carpeta de backend
-    npm run dev 
+    cd backend && pnpm run dev 
 4. Inicia el frontend
-    npx servor ./frontend
+    cd .. && npx servor ./frontend
 5. Añade los archivos al formulario
 
 ### Estado del proyecto
-**Estadísticas actuales (Septiembre 2025)**
+**Estadísticas actuales (Febrero 2026)**
 Desplegado y funcionando en producción
-Múltiples usuarios verificados por Google Analytics
+Usado por más de 300 usuarios verificados por Google Analytics
 Promocionado en redes sociales
 
 ### Licencia
-Este proyecto está bajo la Licencia MIT
+MIT License — ver [LICENSE](LICENSE)
 
 ### Autor
 Claudio Rivas, estudiante de Ingeniería Informática en la Universidad de Granada
