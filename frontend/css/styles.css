@@ -345,9 +345,34 @@ legend{
     max-width: 500px;
 }
 
-.input-group{
-    padding: 10px;
-    margin: 10px;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.custom-file {
+  display: block;
+  padding: 10px 16px;
+  background-color: gray;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  transition: background 0.2s ease;
+}
+
+.custom-file:hover {
+  background-color: #555;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #555;
 }
 
 label{
@@ -370,7 +395,7 @@ label{
     border: 2px solid #a400b3;
     background: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background 0.3s;
 }
 
@@ -500,7 +525,7 @@ footer{
         margin: auto;
         font-size: 20px;
         margin-top: 0px;
-        text-align:start; 
+        text-align: justify; 
         letter-spacing:-0.3mm;
         max-width: 280px;
     }
@@ -578,9 +603,9 @@ footer{
     
     .form-descripcion{
         font-size: 20px;
-        max-width: 260px;
+        max-width: 270px;
         margin-top: 0px;
-        text-align: center;
+        text-align: justify;
         margin: 0 auto 15px auto;
     }
 

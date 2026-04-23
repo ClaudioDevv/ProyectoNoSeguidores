@@ -92,6 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Inputs text
+document.getElementById("seguidos").addEventListener("change", function() {
+  document.getElementById("name-seguidos").textContent = this.files[0]?.name || "Ningún archivo seleccionado";
+});
+
+document.getElementById("seguidores").addEventListener("change", function() {
+  document.getElementById("name-seguidores").textContent = this.files[0]?.name || "Ningún archivo seleccionado";
+});
+
 
 //Api
 document.querySelector("#calcularNoSeguidores").addEventListener("click", async function (event) {

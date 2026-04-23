@@ -56,7 +56,7 @@
         <section class="seguridad fade-in">
             <h2>¿Por qué es seguro NoSeguidores?</h2>
             <p class="seguridad-descripcion fade-in">
-                NoSeguidores es una herramienta que te permite descubrir quién no te sigue en Instagram sin necesidad de introducir tu contraseña.
+                NoSeguidores es la herramienta que te permite descubrir quién no te sigue en Instagram sin necesidad de introducir tu contraseña.
                 Utiliza archivos JSON que puedes descargar directamente desde la aplicación oficial de Instagram, lo que garantiza la seguridad de tus datos ya que solo estas introduciendo un archivo con el nombre de tus SEGUIDORES y SEGUIDOS.
             </p>
         </section>
@@ -125,16 +125,22 @@
                     </p>
                 
                 <div class="input-group">
-                    <label for="seguidos">Archivo <strong>following.json</strong>:</label>
-                    <input type="file" id="seguidos" name="seguidos" accept="application/json" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="seguidores">Archivo <strong>followers_1.json</strong>:</label>
-                    <input type="file" id="seguidores" name="seguidores" accept="application/json" required>
+                    <label for="seguidos" class="custom-file">
+                        📁 Subir following.json
+                    </label>
+                    <input type="file" id="seguidos" name="seguidos" accept="application/json" required hidden>
+                    <span class="file-name" id="name-seguidos">Ningún archivo seleccionado</span>
+                    </div>
+
+                    <div class="input-group">
+                    <label for="seguidores" class="custom-file">
+                        📁 Subir followers_1.json
+                    </label>
+                    <input type="file" id="seguidores" name="seguidores" accept="application/json" required hidden>
+                    <span class="file-name" id="name-seguidores">Ningún archivo seleccionado</span>
                 </div>
 
-                <button id="calcularNoSeguidores" type="button">Calcular tus NO Seguidores</button>
+                <button id="calcularNoSeguidores" type="button">Calcular NO Seguidores</button>
             </fieldset>
         </section>
 
@@ -157,7 +163,7 @@
             <a class="email" target = “_blank” rel = “noreferrer” href="mailto:noseguidores.web@gmail.com">email</a>.
         </p>
         <a class="email" href="privacidad.html">Política de Privacidad</a>
-        <p>NoSeguidores &copy; 2024 - 2025</p>
+        <p>NoSeguidores &copy; 2024 - 2026</p>
     </footer>
 
     <script src="js/cookies.js" defer></script>
